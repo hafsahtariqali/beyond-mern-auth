@@ -14,7 +14,7 @@ connectDB();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://beyond-mern-auth-rmz7leys0-hafsas-projects-cacb6cb0.vercel.app" 
+  "https://beyond-mern-auth.vercel.app/"
 ];
 
 app.use(express.json());

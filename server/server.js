@@ -12,23 +12,27 @@ const PORT = process.env.PORT || 4000;
 
 connectDB();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://beyond-mern-auth.vercel.app/"
-];
-
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    const allowedOrigins = [
+      "http://localhost:5173",
+      "https://beyond-mern-auth.vercel.app"
+    ];
+
+    const isVercelPreview = origin?.includes(".vercel.app");
+
+    if (!origin || allowedOrigins.includes(origin) || isVercelPreview) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(cookieParser());
 
 //API endpoints
 app.get('/', (req, res) => {res.send("API is Working.")})

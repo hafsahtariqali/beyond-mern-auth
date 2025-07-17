@@ -16,7 +16,8 @@ const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
       "http://localhost:5173",
-      "https://beyond-mern-auth.vercel.app"
+      "https://beyond-mern-auth.vercel.app",
+      "https://beyond-mern-auth-production.up.railway.app"
     ];
 
     const isVercelPreview = origin?.includes(".vercel.app");

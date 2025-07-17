@@ -31,9 +31,9 @@ const corsOptions = {
   credentials: true
 };
 
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors(corsOptions));
 
 //API endpoints
 app.get('/', (req, res) => {res.send("API is Working.")})
